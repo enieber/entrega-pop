@@ -1,32 +1,14 @@
-import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import React from 'react';
 
-import SelectCategory, { transformToSelect } from '../components/SelectCategory';
-
-const ALL_CATEGORY = gql`
-	{
-  		allCategory {
-			title
-			id
-		}
-	}
-`;
+import { Content, Description, SelectLocation } from '../components';
 
 function HomeScreen() {
-  const { loading, error, data } = useQuery(ALL_CATEGORY);
-  const [selectedOption, setSelectedOption] = useState({});
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return (
-    <SelectCategory
-      selectedOption={selectedOption}
-      setSelectedOption={setSelectedOption}
-      categories={transformToSelect(data)}
-    />
-  );
+	return (
+		<Content row>
+			<Description text={'Adicione seu endereço para que possamos mostrar os lugares proximos'} />
+			<SelectLocation />
+		</Content>
+	);
 }
 
 export default HomeScreen;
