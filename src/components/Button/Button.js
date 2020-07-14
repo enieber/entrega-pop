@@ -1,13 +1,9 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { ButtonStyled } from './styles';
 
 function Button(props) {
-  return (
-      <button onClick={props.onPress}>
-          {props.children}
-      </button>
-  )
+	return <ButtonStyled onClick={props.onPress}>{props.children}</ButtonStyled>;
 }
 
 export default Button;

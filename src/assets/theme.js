@@ -8,8 +8,9 @@ export const colors = {
 	dark: '#262730',
 	light: '#FFF9FB',
 	grey: '#D3D4D9',
+	transparent: 'transparent',
 };
 
 export default {
-    colors
-}
+	colors,
+};
