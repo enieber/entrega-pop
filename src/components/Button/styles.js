@@ -8,6 +8,8 @@ export const ButtonStyled = styled.button`
 	color: ${theme.colors.light};
 	font-size: 1rem;
 	background: ${theme.colors.dark};
+	margin-top: 10px;
+	margin-bottom: 10px;
 	@media screen and (max-width: 720px) {
 		font-size: 1rem;
 		padding: 10px;

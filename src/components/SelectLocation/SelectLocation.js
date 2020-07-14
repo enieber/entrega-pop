@@ -17,6 +17,7 @@ export default function (props) {
 				}}
 			/>
 			<Button onPress={() => props.onPress(cep)}>Selecionar</Button>
+			<Button onPress={() => props.onPress('')}>Usar anonimo</Button>
 		</Container>
 	);
 }
