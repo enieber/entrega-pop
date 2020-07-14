@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import React from 'react';
+import cep from 'cep-promise';
 
-import SelectCategory, { transformToSelect } from '../components/SelectCategory';
-
-const ALL_CATEGORY = gql`
-	{
-  		allCategory {
-			title
-			id
-		}
-	}
-`;
+import { Content, Description, SelectLocation } from '../components';
 
 function HomeScreen() {
-  const { loading, error, data } = useQuery(ALL_CATEGORY);
-  const [selectedOption, setSelectedOption] = useState({});
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return (
-    <SelectCategory
-      selectedOption={selectedOption}
-      setSelectedOption={setSelectedOption}
-      categories={transformToSelect(data)}
-    />
-  );
+	return (
+		<Content row>
+			<Description text={'Adicione seu endereço para que possamos mostrar os lugares proximos'} />
+			<SelectLocation
+				onPress={async (cepNumber) => {
+					try {
+						if (cepNumber.length !== 0) {
+							if (cepNumber.length >= 8) {
+								const dataCity = await cep(cepNumber);
+								console.log(dataCity);
+							} else {
+								alert('Digite um CEP valido');
+							}
+						} else {
+							alert('oi')
+						}
+					} catch (err) {
+						alert(err);
+					}
+				}}
+			/>
+		</Content>
+	);
 }
 
 export default HomeScreen;
